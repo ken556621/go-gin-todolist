@@ -1,21 +1,17 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/gin-gonic/gin"
+
+	"go-gin-todolist/routes"
 )
 
 func main() {
-	r := gin.Default()
+	router := gin.New()
+	router.Use(gin.Logger())
 
-	fmt.Println("KKKKKKKKKKKKKKKK============")
+	routes.TodoListRoutes(router)
 
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "KKKKKKKKKKKKKKKK============",
-		})
-	})
-
-	r.Run() // listen and serve on 0.0.0.0:8080
+	port := "8080"
+	router.Run(":" + port)
 }

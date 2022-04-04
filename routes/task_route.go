@@ -7,5 +7,6 @@ import (
 )
 
 func TodoListRoutes(incomingRoutes *gin.Engine) {
-	incomingRoutes.GET("/users/signup", controllers.TodoListGet())
+	incomingRoutes.GET("/tasks", controllers.GetTodoList())
+	incomingRoutes.POST("/task", controllers.PostTodoList())
 }
